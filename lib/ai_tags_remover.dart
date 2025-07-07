@@ -9,7 +9,7 @@ final log = Logger.root..level = Level.ALL;
 final separator = Platform.pathSeparator;
 Future<void> processDirectory(
   Directory directory, {
-  List<String> ignoreDirs = const [],
+  List<String> ignoreDirs = const ['generated/intl'],
 }) async {
   var filesProcessed = 0;
   var symbolsRemoved = 0;
