@@ -1,0 +1,5 @@
+version:
+  revision: "4bd15ffb35b978690dae90692fefee2df7a38691"
+  channel: "stable"
+
+project_type: package
