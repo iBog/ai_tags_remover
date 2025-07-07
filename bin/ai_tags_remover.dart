@@ -15,7 +15,7 @@ void main(List<String> args) async {
   }
 
   final directory = argResults.rest.isNotEmpty ? argResults.rest[0] : '.';
-  final ignoreDirs =
+  final List<String> ignoreDirs =
       argResults['ignore-dirs'].split(',').map((e) => e.trim()).toList();
 
   await processDirectory(Directory(directory), ignoreDirs: ignoreDirs);
