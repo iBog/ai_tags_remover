@@ -2,14 +2,18 @@ import 'dart:io';
 
 import 'package:logging/logging.dart';
 
-final log = Logger.root..level = Level.ALL;
+final log = Logger.root
+  ..level = Level.ALL
+  ..onRecord.listen((record) {
+    print('${record.level.name}: ${record.time}: ${record.message}');
+  });
 
 /// Path separator
 ///
 final separator = Platform.pathSeparator;
 Future<void> processDirectory(
   Directory directory, {
-  List<String> ignoreDirs = const ['generated/intl'],
+  List<String> ignoreDirs = const [],
 }) async {
   var filesProcessed = 0;
   var symbolsRemoved = 0;

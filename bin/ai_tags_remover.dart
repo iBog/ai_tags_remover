@@ -5,7 +5,7 @@ import 'package:args/args.dart';
 
 void main(List<String> args) async {
   final parser = ArgParser()
-    ..addOption('ignore-dirs', defaultsTo: '')
+    ..addOption('ignore-dirs', defaultsTo: 'generated/intl')
     ..addFlag('version', negatable: false);
   final argResults = parser.parse(args);
 
@@ -15,8 +15,10 @@ void main(List<String> args) async {
   }
 
   final directory = argResults.rest.isNotEmpty ? argResults.rest[0] : '.';
-  final List<String> ignoreDirs =
-      argResults['ignore-dirs'].split(',').map((e) => e.trim()).toList();
+  final ignoreDirs = (argResults['ignore-dirs'] as String)
+      .split(',')
+      .map((e) => e.trim())
+      .toList();
 
   await processDirectory(Directory(directory), ignoreDirs: ignoreDirs);
 }
