@@ -26,6 +26,11 @@ Future<void> processDirectory(
       if (entity is File &&
           (entity.path.endsWith('.dart') ||
               entity.path.endsWith('.yaml') ||
+              entity.path.endsWith('.yml') ||
+              entity.path.endsWith('.arb') ||
+              entity.path.endsWith('.csv') ||
+              entity.path.endsWith('.env') ||
+              entity.path.endsWith('.txt') ||
               entity.path.endsWith('.md'))) {
         if (ignoreDirs.any((dir) => entity.path.contains(dir))) {
           continue;

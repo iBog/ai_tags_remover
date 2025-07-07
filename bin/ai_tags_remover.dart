@@ -10,7 +10,7 @@ void main(List<String> args) async {
   final argResults = parser.parse(args);
 
   if (argResults['version']) {
-    log.info('ai_tags_remover v0.7.0');
+    log.info('ai_tags_remover v0.7.1');
     return;
   }
 

@@ -1,6 +1,6 @@
 name: ai_tags_remover
 description: Dart/flutter tool to remove all AI-related invisible (hidden) symbols from the project
-version: 0.7.0
+version: 0.7.1
 repository: https://github.com/iBog/ai_tags_remover
 
 environment:
