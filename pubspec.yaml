@@ -6,14 +6,8 @@ topics:
   - ai
   - invisible
   - hidden
-  - llm
   - unicode
   - tags
-  - anchor
-  - hidden_symbols
-  - invisible_symbols
-  - watermark
-  - llm_watermark
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
