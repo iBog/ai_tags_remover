@@ -10,10 +10,10 @@ void main(List<String> args) async {
 /// Executes the AI tags remover.
 ///
 /// Command-line arguments:
-/// ignore-dirs - List of ignoring dirs separated by commas
 /// --version - App version
 /// --readonly - Do not apply file changes, only analysis
 /// --verbose - Print report for every processed file
+/// --ignore-dirs - List of ignoring dirs separated by commas
 Future<void> execute(List<String> args) async {
   final parser = ArgParser()
     ..addOption('ignore-dirs',

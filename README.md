@@ -30,6 +30,11 @@ Open a terminal in your current project, then run:
 dart run ai_tags_remover
 ```
 
+Run with params:
+```shell
+dart run ai_tags_remover d:\Work\ext_project --verbose --readonly
+```
+
 This package will automatically process all files from your project and removes all secret anchors from your code and project files
 
 ## Contributions
