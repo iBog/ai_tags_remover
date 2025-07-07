@@ -7,7 +7,10 @@ final log = Logger.root..level = Level.ALL;
 /// Path separator
 ///
 final separator = Platform.pathSeparator;
-Future<void> processDirectory(Directory directory) async {
+Future<void> processDirectory(
+  Directory directory, {
+  List<String> ignoreDirs = const [],
+}) async {
   var filesProcessed = 0;
   var symbolsRemoved = 0;
 
@@ -20,6 +23,9 @@ Future<void> processDirectory(Directory directory) async {
           (entity.path.endsWith('.dart') ||
               entity.path.endsWith('.yaml') ||
               entity.path.endsWith('.md'))) {
+        if (ignoreDirs.any((dir) => entity.path.contains(dir))) {
+          continue;
+        }
         filesProcessed++;
         final removedCount = await processFile(entity);
         symbolsRemoved += removedCount;

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ai_tags_remover/ai_tags_remover.dart';
 import 'package:test/test.dart';
 
@@ -33,6 +35,35 @@ void main() {
             reason:
                 'Failed on input: "${input.replaceAll('\n', '\\n').replaceAll('\r', '\\r')}"');
       }
+    });
+  });
+
+  group('processDirectory', () {
+    test('should ignore specified directories', () async {
+      // 1. Create a temporary directory structure
+      final tempDir = await Directory.systemTemp.createTemp('ai_tags_remover_test');
+      final ignoredDir = Directory('${tempDir.path}${separator}generated');
+      await ignoredDir.create();
+
+      final ignoredFile = File('${ignoredDir.path}${separator}ignored_file.dart');
+      await ignoredFile.writeAsString('Hello\u200BWorld!');
+
+      final processedFile = File('${tempDir.path}${separator}processed_file.dart');
+      await processedFile.writeAsString('Hello\u200BWorld!');
+
+      // 2. Process the directory with the ignore list
+      await processDirectory(tempDir, ignoreDirs: ['generated']);
+
+      // 3. Check that the ignored file is untouched
+      final ignoredFileContent = await ignoredFile.readAsString();
+      expect(ignoredFileContent, equals('Hello\u200BWorld!'));
+
+      // 4. Check that the other file is processed
+      final processedFileContent = await processedFile.readAsString();
+      expect(processedFileContent, equals('HelloWorld!'));
+
+      // 5. Clean up
+      await tempDir.delete(recursive: true);
     });
   });
 }
