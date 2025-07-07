@@ -28,8 +28,8 @@ dev_dependencies:
   test: ^1.26.2
 
 executables:
-  ai_tags_remover: main
-  ai_tags_remove: main
+  ai_tags_remover: ai_tags_remover
+  ai_tags_remove: ai_tags_remover
 
 scripts:
   analyze: "dart run ai_tags_remover"
